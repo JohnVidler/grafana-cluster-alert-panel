@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "Cluster Alert",
-  "id": "ucrel-clusteralert-panel",
+  "id": "johnvidler-clusteralert-panel",
   "info": {
     "keywords": ["panel"],
     "description": "Visualises cluster alert state",
@@ -14,7 +14,7 @@
       "large": "img/logo.svg"
     },
     "links": [],
-    "screenshots": [],
+    "screenshots": [{ "name": "Cluster alert tiles", "path": "img/screenshot-tiles.png" }],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },

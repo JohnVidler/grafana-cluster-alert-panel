@@ -1,0 +1,175 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "groupByLabels": ["instance"],
+        "sortBy": "count",
+        "noAlertsText": "All clear",
+        "metricRules": [
+          {
+            "refId": "A",
+            "kind": "series",
+            "displayName": "Load trend",
+            "unit": "none",
+            "decimals": 2,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "value": null,
+                  "color": "green"
+                },
+                {
+                  "value": 1,
+                  "color": "orange",
+                  "format": "Rising {{value}} / {{interval}}"
+                },
+                {
+                  "value": 3,
+                  "color": "red",
+                  "format": "Climbing fast\\n{{value}} / {{interval}}"
+                }
+              ]
+            },
+            "trigger": 1
+          },
+          {
+            "refId": "B",
+            "kind": "instant",
+            "displayName": "Disk used",
+            "unit": "percent",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "value": null,
+                  "color": "green"
+                },
+                {
+                  "value": 80,
+                  "color": "orange",
+                  "format": "{{value}} used on {{instance}}"
+                },
+                {
+                  "value": 90,
+                  "color": "red",
+                  "format": "{{value}} over 90% on {{instance}}\\nfree space now!"
+                }
+              ]
+            },
+            "trigger": 80
+          }
+        ],
+        "maxColumns": 4,
+        "cycleSeconds": 3
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "random_walk",
+          "seriesCount": 6,
+          "labels": "instance=node$seriesIndex"
+        },
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "B",
+          "scenarioId": "raw_frame",
+          "rawFrameContent": "[\n  {\n    \"target\": \"disk_used\",\n    \"tags\": {\n      \"instance\": \"node1\"\n    },\n    \"datapoints\": [\n      [\n        93,\n        1700000000000\n      ]\n    ]\n  },\n  {\n    \"target\": \"disk_used\",\n    \"tags\": {\n      \"instance\": \"node2\"\n    },\n    \"datapoints\": [\n      [\n        71,\n        1700000000000\n      ]\n    ]\n  }\n]"
+        }
+      ],
+      "title": "Cluster alerts",
+      "type": "johnvidler-clusteralert-panel",
+      "interval": "1m"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "groupByLabels": ["instance"],
+        "sortBy": "count",
+        "noAlertsText": "All clear",
+        "metricRules": [],
+        "maxColumns": 4,
+        "cycleSeconds": 3
+      },
+      "targets": [
+        {
+          "alias": "",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "no_data_points"
+        }
+      ],
+      "title": "No alerts",
+      "type": "johnvidler-clusteralert-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Provisioned cluster-alert dashboard",
+  "uid": "a538aeff-5a8a-42a5-901c-938d896fdd6f",
+  "version": 1,
+  "weekStart": ""
+}
