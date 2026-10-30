@@ -25,3 +25,6 @@ jobs:
           persist-credentials: false
 
       - uses: grafana/plugin-actions/bundle-size@bundle-size/v1.1.0
+        with:
+          # This action only takes a literal version (default 22). Keep in sync with .nvmrc.
+          node-version: '24'

@@ -16,5 +16,7 @@ jobs:
     steps:
       - uses: grafana/plugin-actions/create-plugin-update@create-plugin-update/v2.0.2
         with:
+          # This action only takes a literal version (default 20, too old for the build). Keep in sync with .nvmrc.
+          node-version: '24'
           # Make sure to save the token in your repository secrets as `GH_PAT_TOKEN`
           token: ${{ secrets.GH_PAT_TOKEN }}
